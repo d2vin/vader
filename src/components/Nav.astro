@@ -1,0 +1,19 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<nav aria-label="Primary">
+  <div class="px-8 py-2 flex items-center justify-between border">
+    <a href="/" class="logomark" aria-label="Go home">
+      <Icon name="logomark" width={64} height={64} />
+    </a>
+    <ul class="flex space-x-8">
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/about">About</a>
+      </li>
+    </ul>
+  </div>
+</nav>
