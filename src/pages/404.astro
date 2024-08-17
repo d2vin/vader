@@ -1,0 +1,23 @@
+---
+import Link from "../components/Link.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Page Not Found">
+  <div>
+    <div>
+      <h1>Welp, this is awkward!</h1>
+      <p>We seem to have misplaced something…</p>
+    </div>
+    <Link
+      classes="flex items-center"
+      href="/"
+      style="secondary"
+      text="Go Home"
+      icon={{
+        name: "logomark",
+        side: "right",
+      }}
+    />
+  </div>
+</Layout>

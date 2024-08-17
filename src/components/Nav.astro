@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import Link from './Link.astro';
 ---
 
 <nav aria-label="Primary">
@@ -9,11 +10,18 @@ import { Icon } from 'astro-icon/components';
     </a>
     <ul class="flex space-x-8">
       <li>
-        <a href="/">Home</a>
+        <Link classes="flex items-center" href="/" text="Home" style="primary" icon={{ name: "logomark", side: "right"}} data-navLink />
       </li>
       <li>
-        <a href="/about">About</a>
+        <Link href="/about" text="About" style="primary" data-navLink />
+      </li>
+      <li>
+        <Link href="/posts" text="Posts" style="primary" data-navLink />
       </li>
     </ul>
   </div>
 </nav>
+
+<script>
+  import "../utils/nav.ts";
+</script>
