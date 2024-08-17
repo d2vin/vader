@@ -4,19 +4,40 @@ import Link from './Link.astro';
 ---
 
 <nav aria-label="Primary">
-  <div class="px-8 py-2 flex items-center justify-between border">
-    <a href="/" class="logomark" aria-label="Go home">
+  <div class="flex items-center justify-between border px-8 py-2">
+    <a aria-label="Go home" class="logomark" href="/">
       <Icon name="logomark" width={64} height={64} />
     </a>
     <ul class="flex space-x-8">
       <li>
-        <Link classes="flex items-center" href="/" text="Home" style="primary" icon={{ name: "logomark", side: "right"}} data-navLink />
+        <Link
+          classes="flex items-center"
+          data-navLink
+          href="/"
+          icon={{ name: "logomark", side: "right" }}
+          style="primary"
+          text="Home"
+        />
       </li>
       <li>
-        <Link href="/about" text="About" style="primary" data-navLink />
+        <Link
+          classes="flex items-center"
+          data-navLink
+          href="/about"
+          icon={{ name: "logomark", side: "right" }}
+          style="primary"
+          text="About"
+        />
       </li>
       <li>
-        <Link href="/posts" text="Posts" style="primary" data-navLink />
+        <Link
+          classes="flex items-center"
+          data-navLink
+          href="/posts"
+          icon={{ name: "logomark", side: "right" }}
+          style="primary"
+          text="Posts"
+        />
       </li>
     </ul>
   </div>
