@@ -1,4 +1,5 @@
 ---
+import Pagination from "../components/Pagination.astro";
 import PostHeader from "../components/PostHeader.astro";
 import Layout from "./Layout.astro";
 
@@ -15,4 +16,5 @@ const { title, description, date, category, author, image } = frontmatter;
     </div>
     <div class="sidebar"></div>
   </div>
+  <Pagination />
 </Layout>

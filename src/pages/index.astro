@@ -1,7 +1,30 @@
 ---
+import Link from "../components/Link.astro";
+import PostCard from "../components/PostCard.astro";
 import Layout from "../layouts/Layout.astro";
+import { formatPosts } from "../utils";
+
+const allPosts = await Astro.glob("./posts/*.md");
+const formattedPosts = formatPosts(allPosts, { limit: 1 });
 ---
 
 <Layout title="Home" description="My home page">
-	Index
+  <div class="flex space-x-3">
+  <h1 class="text-2xl">prodven</h1>
+  </div>
+  <Link href="/about" style="secondary" text="👋 About Me" />
+	<section class="container" aria-label="New Posts">
+    <h2>New Posts</h2>
+    <div>
+      {
+        formattedPosts.map((post: any) => (
+          <PostCard
+            frontmatter={post.frontmatter}
+            url={post.url}
+            tagType="h3"
+          />
+        ))
+      }
+    </div>
+  </section>
 </Layout>

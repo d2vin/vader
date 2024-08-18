@@ -1,0 +1,39 @@
+---
+import Link from "./Link.astro";
+
+const { prevUrl, nextUrl } = Astro.props;
+---
+
+<nav aria-label="Blog pages">
+  {
+    prevUrl && (
+      <Link
+        classes="flex items-center"
+        text="Previous"
+        href={prevUrl}
+        style="primary"
+        borderVisible={true}
+        isFilled={false}
+        icon={{ name: "logomark", side: "right" }}
+      />
+    )
+  }
+  {
+    nextUrl && (
+      <Link
+        classes="flex items-center"
+        text="Next"
+        href={nextUrl}
+        style="primary"
+        borderVisible={true}
+        isFilled={false}
+        icon={{ name: "logomark", side: "right" }}
+      />
+    )
+  }
+  {
+    !prevUrl && !nextUrl && (
+      <span class="bg-neutral-50 py-4 w-full left-0 text-center fixed bottom-14 text-sm">No more pages</span>
+    )
+  }
+</nav>
