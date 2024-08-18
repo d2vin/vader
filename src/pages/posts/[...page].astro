@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import PostCard from "../../components/PostCard.astro";
 import { formatPosts } from "../../utils";
 import Pagination from "../../components/Pagination.astro";
+import CategoryList from "../../components/CategoryList.astro";
 
 export async function getStaticPaths({ paginate }: { paginate: any }): Promise<any> {
   const allPosts = await Astro.glob("./*.md");
@@ -30,6 +31,7 @@ const { page }: { page: any } = Astro.props;
         ))
       }
     </div>
+    <CategoryList showCount />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </section>
 </Layout>

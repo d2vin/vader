@@ -1,4 +1,5 @@
 ---
+import CategoryList from "../components/CategoryList.astro";
 import Pagination from "../components/Pagination.astro";
 import PostHeader from "../components/PostHeader.astro";
 import Layout from "./Layout.astro";
@@ -14,7 +15,11 @@ const { title, description, date, category, author, image } = frontmatter;
     <div class="content">
       <slot />
     </div>
-    <div class="sidebar"></div>
+    <div class="sidebar">
+      <aside class="container" aria-label="Blog categories">
+        <CategoryList showCount/>
+      </aside>
+    </div>
   </div>
   <Pagination />
 </Layout>

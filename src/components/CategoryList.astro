@@ -1,0 +1,32 @@
+---
+import { formatPosts, slugify } from "../utils";
+
+const allPosts = await Astro.glob("../pages/posts/*.md");
+const formattedPosts = formatPosts(allPosts);
+const allCategories = formattedPosts
+  .map((post: any) => post.frontmatter.category.toLowerCase())
+  .flat();
+
+const processedCategories = allCategories.reduce((acc: any, category: string) => {
+  // check if the category exists in the acc
+  const value = acc[category] || 0;
+
+  // keep track of the count of each category
+  return {
+    ...acc,
+    [category]: value + 1
+  }
+}, {})
+
+const { showCount } = Astro.props;
+---
+
+<ul class="bg-neutral-100 py-4 w-full left-0 text-center fixed bottom-[108px] text-sm">
+  {
+    Object.entries(processedCategories).map(([key, val]) => (
+      <li>
+        <a class="badge" href={`/category/${slugify(key)}/`}>{key} {showCount && `(${val})`}</a>
+      </li>
+    ))
+  }
+</ul>
