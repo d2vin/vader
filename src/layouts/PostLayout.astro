@@ -2,11 +2,25 @@
 import CategoryList from "../components/CategoryList.astro";
 import Pagination from "../components/Pagination.astro";
 import PostHeader from "../components/PostHeader.astro";
+import RelatedPosts from "../components/RelatedPosts.astro";
+import { formatPosts } from "../utils";
 import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
 
 const { title, description, date, category, author, image } = frontmatter;
+
+const allPosts = await Astro.glob("../pages/posts/*.md");
+const formattedPosts = formatPosts(allPosts, {
+  sortByDate: false,
+});
+const relatedPosts = formattedPosts
+  .filter(
+    (post: any) =>
+      post.frontmatter.category.toLowerCase() === category.toLowerCase() &&
+      post.frontmatter.title !== title
+  )
+  .slice(0, 3);
 ---
 
 <Layout {title} {description}>
@@ -19,6 +33,14 @@ const { title, description, date, category, author, image } = frontmatter;
       <aside class="container" aria-label="Blog categories">
         <CategoryList showCount/>
       </aside>
+      {
+        relatedPosts.length > 0 && (
+          <aside class="container" aria-label="Related posts">
+            <h2 class="h3">Related Posts</h2>
+            <RelatedPosts {relatedPosts} />
+          </aside>
+        )
+      }
     </div>
   </div>
   <Pagination />
