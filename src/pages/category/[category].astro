@@ -15,6 +15,15 @@ export const getStaticPaths = (async () => {
         description: "My Reference Docs page"
       },
     },
+    {
+      params: {
+        category: slugify("General")
+      },
+      props: {
+        title: "General",
+        description: "My General page"
+      },
+    },
   ];
 }) satisfies GetStaticPaths;
 
