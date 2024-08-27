@@ -21,7 +21,7 @@ const processedCategories = allCategories.reduce((acc: any, category: string) =>
 const { showCount } = Astro.props;
 ---
 
-<ul class="bg-neutral-100 py-4 w-full left-0 text-center fixed bottom-14 text-sm">
+<ul class="bg-neutral-100 py-4">
   {
     Object.entries(processedCategories).map(([key, val]) => (
       <li>
