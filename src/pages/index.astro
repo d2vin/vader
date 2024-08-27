@@ -5,17 +5,12 @@ import Layout from "../layouts/Layout.astro";
 import { formatPosts } from "../utils";
 
 const allPosts = await Astro.glob("./posts/*.md");
-const formattedPosts = formatPosts(allPosts, { limit: 1 });
+const formattedPosts = formatPosts(allPosts, { limit: 5 });
 ---
 
 <Layout title="Home" description="My home page">
-  <div class="flex space-x-3">
-  <h1 class="text-2xl">padme</h1>
-  </div>
-  <Link href="/about" style="secondary" text="👋 About Me" />
-	<section class="container" aria-label="New Posts">
-    <h2>New Posts</h2>
-    <div>
+	<section aria-label="New Posts">
+    <div class="grid place-items-center md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8">
       {
         formattedPosts.map((post: any) => (
           <PostCard
