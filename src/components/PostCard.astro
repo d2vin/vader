@@ -10,33 +10,23 @@ const Tag = tagType;
 const { title, date, author, image, description, category } = frontmatter;
 ---
 
-<article>
-  <small>
-    <a href={`/category/${slugify(category)}`}>{category}</a>
-  </small>
+<article class="w-96 rounded-3xl overflow-hidden hover:scale-[1.02] transition duration-200">
   <a href={url} aria-hidden="true" tabindex="-1">
     <Image
       src={image.src}
       alt={image.alt}
-      width="400"
-      height="250"
+      width="800"
+      height="800"
       format="webp"
       quality={80}
-      class="object-cover rounded-md w-64 h-48"
+      class="transition duration-300 transform blur-0 scale-100 w-full h-48 object-cover object-top"
     />
   </a>
-  <div>
-    <div>
-      <Tag>
-        <a href={url}>{title}</a>
-      </Tag>
-      <small>
-        by <a href={`/author/${slugify(author)}/`}>{author}</a> • {
-          formatDate(date)
-        }
-      </small>
-    </div>
-    <p>{description}</p>
+  <div class="p-4 md:p-8 bg-white dark:bg-neutral-900">
+    <Tag>
+      <a href={url} class="text-lg font-bold mb-4 text-neutral-800 dark:text-neutral-100 hover:underline">{title}</a>
+    </Tag>
+    <p class="text-left text-sm mt-2 text-neutral-600 dark:text-neutral-400">{description}</p>
     <Link href={url} text="Read Post" style="secondary" />
   </div>
 </article>
