@@ -1,12 +1,14 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import productive from '../../public/images/logo.svg';
 import Link from './Link.astro';
 ---
 
 <nav aria-label="Primary">
   <div class="flex items-center justify-between border px-8 py-2">
     <a aria-label="Go home" class="logomark" href="/">
-      <Icon name="logomark" width={64} height={64} />
+      <Image src={productive} alt="Productive Logo" width={48} height={48} />
     </a>
     <ul class="flex space-x-8">
       <li>
